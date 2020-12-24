@@ -1,0 +1,48 @@
+@start
+
+   import Native
+
+        construct IdealScript => ():
+
+            node main => ():
+                build("enable")
+                invoke(testMethod, none)
+            done
+
+            construct-node => (self, x, y):
+                self(x, 10)
+                self(y, 20)
+            done
+
+            node testMethod => (s):
+                val objects = List(Native)
+                parallel-for(object : objects)
+                    write(object)
+                end
+                write(s)
+            done
+
+            node myNewMethod => ():
+                write("HI" + "DDD\nf")
+            done
+
+            node booleans => ():
+                when("x" != "y")
+                    write("Hu")
+                    return false
+                end
+                or when("y" == "y")
+                    return true
+                end
+                or
+                    write("DONE")
+                done
+            done
+
+            node loops => ():
+                loop(10)
+                    write("HI")
+                end
+            done
+
+@end

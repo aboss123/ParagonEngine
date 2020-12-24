@@ -1,0 +1,14 @@
+package Tiles {
+
+    export "Grass"
+        texture: "\fd\f\d\f.png"
+        solid: false
+
+    export "Lava"
+        texture: "\f\f\f\f.png"
+        solid: true
+        damage: true
+        numberOfDamage: 40
+}
+
+

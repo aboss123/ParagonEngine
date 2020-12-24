@@ -1,0 +1,9 @@
+@start
+
+class MyClass
+
+    global event main => ()
+        write("Hello World")
+    done
+
+@end

@@ -1,0 +1,110 @@
+** GameScript Scripting Language TO-DO List **
+
+// Finished
+- start and end script functions (done)
+- class parsing and main method parsing (done)
+- method parsing (done)
+- invoking methods (done)
+- Window function for hackathon (done)
+
+// TO-DO
+- fix executions of functions outside of methods (to-do)
+- create loops (to-do)
+- parse variables and use them (to-do)
+- create when and or when statements (to-do)
+- create entity and map functions (to-do)
+- make it the syntax easy to understand (to-do)
+- create build function that enables game engine functions
+or disables them (to-do)
+- parse all done tokens for all commands (to-do)
+- create arrays / lists
+- enable parameters (to-do)
+- setup parallel for-loops that are used get every specific type
+of item in an array of items and use them for any other functions (to-do)
+- add entity properties (to-do)
+
+** GameScript Scripting Language Syntax **
+
+KEYWORDS:
+    @start - The start of the script to initialize it
+    @end - Shows where the script ends to prevent EOL parsing errors
+    class - The class in which the script is being run in
+    build - The keyword that enables functions of the game engine or not
+    such as ('entity' or 'map') keywords
+    invoke - The keyword allows the coder to invoke methods they have created
+    in the file
+    write - The keyword will print out anything to console that is typed in it
+    eval - The keyword will print out the result of the evaluation that is given
+    Window - The keyword will create a window with the parameters that it needs as
+    (string name, int width, int height)
+    node - The keyword is used before defining methods that can be used in the
+    language
+    done - This keyword symbolizes the end of a method
+    val - The keyword will define variables in the language
+    loop - The keyword will loop the functions beneath it for a given number of times,
+    and the parameters are (int timesToLoop)
+    when - When the condition is true it will do the code under it
+    or - Used as an 'else' statement at the end of when statements and is often used
+    as an 'else if' when being used a "or when" statement
+    parallel-for - Used in tangent with 'for' for advanced looping
+    import - Import Native Functions and other classes
+    map - Used as function to set the map and in parallel looping (Game-Engine)
+    entity - Used as an element within the map for parallel looping (Game-Engine)
+
+    // Examples
+    @start                      ** Starting the script **
+
+        import Native
+        import TestSuper
+
+        construct Example           ** Initializing the class **
+            node main():      ** Initializing the main method **
+                build("enable") ** Enabling Game-Engine functions **
+                invoke(values)  ** Invokes / Runs the method called 'values'
+            done                ** Ending the method **
+
+            construct-node(self, x, q):
+                self.x = new value("6")
+            done
+
+
+            node values():    ** Initializing the method **
+                val x = 10      ** Declaring the variable at value '10' **
+                write(x)        ** Printing out the variable **
+            done                ** Ending the method **
+
+            node evaluate(s): ** Initializing the method with 1 parameter 's'
+                eval(s)         ** Evaluating the equation 's' given as input in a string format and printing it out
+            done                ** Ending the method **
+
+            node booleans():  ** Initializing the method **
+                val y = 6       ** Declaring the variable at value '6' **
+                when(y == 6)    ** Setting when condition when 'y' is equal to '6' **
+                    y = 4       ** Setting 'y' equal to '4' when the above condition is true **
+                or when(y == 4) ** Like 'else if' with a new condition when 'y' equals '4' **
+                    y = 2       ** Setting 'y' equal to '2' when the above condition is true **
+                end
+                or              ** Like 'else', when all else fails **
+                    y = 1       ** Setting 'y' equal to '1' **
+                end
+            done                ** Ending the method **
+
+
+            node windows():   ** Initializing the method **
+                Window("MyWindow", 500, 500)    ** Creates a window named 'MyWindow' with a width of '500' and a height of '500'
+            done                ** Ending the method **
+
+            node loops():     ** Initializing the method **
+                loop(10)        ** Loops the code below '10' times
+                    write("H")  ** Prints 'H' for the number of times looped
+            done                ** Ending the method **
+
+            node complex():   ** Initializing the method **
+              parallel-for(entity : map) ** Runs an advanced loop for every 'entity' in the 'map' **
+                write("Hi")     ** Prints hi for every 'entity' that exists in the 'map' **
+              end               ** Ends the loop **
+            done                ** Ending the method **   
+
+   @end                         ** Ends the script **
+
+
